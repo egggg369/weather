@@ -36,6 +36,7 @@
     _textField.layer.cornerRadius = 5;
     _textField.layer.borderWidth = 2;
     _textField.layer.borderColor = [UIColor whiteColor].CGColor;
+    [_textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(15, 110, [UIScreen mainScreen].bounds.size.width, 500) style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
@@ -54,12 +55,19 @@
     
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    [self creatUrl];
-    _cityNumber = [[NSMutableArray alloc] init];
-    return YES;
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    [self creatUrl];
+//    _cityNumber = [[NSMutableArray alloc] init];
+//    return YES;
+//}
+
+- (void)textFieldDidChange:(UITextField *)textField {
+        [self creatUrl];
+       _cityNumber = [[NSMutableArray alloc] init];
+       //return YES;
 }
+
 
 - (void)creatUrl
 {
